@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proofread Question and Options</title>
+</head>
+<body>
+    <h1>Proofread Question and Options</h1>
+    <h2>Flesch Readability Scores:</h2>
+    <ul>
+        <li>Question: <span id="question_score"></span></li>
+        <li>Option A: <span id="option_a_score"></span></li>
+        <li>Option B: <span id="option_b_score"></span></li>
+        <li>Option C: <span id="option_c_score"></span></li>
+        <li>Option D: <span id="option_d_score"></span></li>
+        <li>Option E: <span id="option_e_score"></span></li>
+    </ul>
+
+    <h2>Proofread Question and Options:</h2>
+    <div id="proofread_question"></div>
+    <div id="proofread_option_a"></div>
+    <div id="proofread_option_b"></div>
+    <div id="proofread_option_c"></div>
+    <div id="proofread_option_d"></div>
+    <div id="proofread_option_e"></div>
+
+    <h2>Changes Made:</h2>
+    <div id="changes_question"></div>
+    <div id="changes_option_a"></div>
+    <div id="changes_option_b"></div>
+    <div id="changes_option_c"></div>
+    <div id="changes_option_d"></div>
+    <div id="changes_option_e"></div>
+
+    <script>
+        // Function to update content dynamically
+        function updateContent() {
+            // Update Flesch readability scores
+            document.getElementById('question_score').innerText = '{{ result["flesch_readability_score"]["question"] }}';
+            document.getElementById('option_a_score').innerText = '{{ result["flesch_readability_score"]["option_a"] }}';
+            document.getElementById('option_b_score').innerText = '{{ result["flesch_readability_score"]["option_b"] }}';
+            document.getElementById('option_c_score').innerText = '{{ result["flesch_readability_score"]["option_c"] }}';
+            document.getElementById('option_d_score').innerText = '{{ result["flesch_readability_score"]["option_d"] }}';
+            document.getElementById('option_e_score').innerText = '{{ result["flesch_readability_score"]["option_e"] }}';
+
+            // Update proofread content
+            document.getElementById('proofread_question').innerText = '{{ result["proofread"]["question"] }}';
+            document.getElementById('proofread_option_a').innerText = '{{ result["proofread"]["option_a"] }}';
+            document.getElementById('proofread_option_b').innerText = '{{ result["proofread"]["option_b"] }}';
+            document.getElementById('proofread_option_c').innerText = '{{ result["proofread"]["option_c"] }}';
+            document.getElementById('proofread_option_d').innerText = '{{ result["proofread"]["option_d"] }}';
+            document.getElementById('proofread_option_e').innerText = '{{ result["proofread"]["option_e"] }}';
+
+            // Update changes made
+            document.getElementById('changes_question').innerText = '{{ result["changes"]["question"] }}';
+            document.getElementById('changes_option_a').innerText = '{{ result["changes"]["option_a"] }}';
+            document.getElementById('changes_option_b').innerText = '{{ result["changes"]["option_b"] }}';
+            document.getElementById('changes_option_c').innerText = '{{ result["changes"]["option_c"] }}';
+            document.getElementById('changes_option_d').innerText = '{{ result["changes"]["option_d"] }}';
+            document.getElementById('changes_option_e').innerText = '{{ result["changes"]["option_e"] }}';
+        }
+
+        // Call the function when the page loads
+        window.onload = updateContent;
+    </script>
+</body>
+</html>

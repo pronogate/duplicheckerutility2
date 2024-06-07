@@ -1,0 +1,26 @@
+{
+    "flesch_readability_scores": {
+        "question": 38.2,
+        "option_A": 47.7,
+        "option_B": 49.9,
+        "option_C": 41.7,
+        "option_D": 45.7,
+        "option_E": 100
+    },
+    "proofread": {
+        "question": "You are developing a REST API using Spring Boot. You have a requirement to implement pagination for the API response. Which of the following approaches is the most efficient and recommended way to implement pagination in a Spring Boot REST API?",
+        "option_A": "Use query parameters to specify the page number and page size in the API request.",
+        "option_B": "Use request headers to specify the page number and page size in the API request.",
+        "option_C": "Use path parameters to specify the page number and page size in the API request.",
+        "option_D": "Use the request body to specify the page number and page size in the API request.",
+        "option_E": "NA"
+    },
+    "changes_made": {
+        "question": "No change needed",
+        "option_A": "No change needed",
+        "option_B": "No change needed",
+        "option_C": "No change needed",
+        "option_D": "No change needed",
+        "option_E": "No change needed"
+    }
+}

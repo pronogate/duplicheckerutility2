@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Question Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        label:hover {
+            background-color: #0056b3;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .output {
+            max-height: 300px; /* Fixed height for scrolling effect */
+            overflow-y: auto;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        li:hover {
+            transform: scale(1.02);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Duplicate Question Checker</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept=".xlsx" required>
+            <label for="file">Choose Excel File</label>
+            <button type="submit">Upload and Check</button>
+        </form>
+        {% if similar_question_pairs is not none %}
+            <div class="output">
+                <h2>Similar questions found:</h2>
+                <ul>
+                {% for pair in similar_question_pairs %}
+                    <li>Serial {{ pair[0] }} and Serial {{ pair[1] }} are similar (Similarity: {{ pair[2] }}%)</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        const fileInput = document.getElementById('file');
+        const fileLabel = document.querySelector('label[for="file"]');
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                fileLabel.textContent = fileInput.files[0].name;
+            } else {
+                fileLabel.textContent = 'Choose Excel File';
+            }
+        });
+    </script>
+</body>
+</html>
